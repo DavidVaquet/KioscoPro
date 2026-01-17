@@ -17,7 +17,8 @@ namespace KioscoPro.Domain.Entities
         public bool IsActive { get; private set; }
         public DateTime CreatedAtUtc { get; private set; }
         public DateTime DesactivedAt { get; private set; }
-        public Subscription? Subscription { get; private set; } = null!;
+        private readonly List<Subscription> _subscriptions = new();
+        public IReadOnlyCollection<Subscription> Subscriptions => _subscriptions.AsReadOnly();
 
         protected Tenant() {}
         public void Disable() => IsActive = false;

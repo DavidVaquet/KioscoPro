@@ -17,9 +17,9 @@ namespace KioscoPro.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task AddAsync(Plan plan)
+        public void Add(Plan plan)
         {
-            await _context.Plans.AddAsync(plan);
+             _context.Plans.Add(plan);
         }
         public async Task<List<Plan>> GetAllPlanAsync()
         {
@@ -30,8 +30,9 @@ namespace KioscoPro.Infrastructure.Repositories
         }
         public async Task<Plan?> GetPlanByIdAsync(Guid id)
         {
-            return await _context.Plans.AsNoTracking()
-                                .FirstOrDefaultAsync(p => p.Id == id); 
+            return await _context.Plans
+                                 .AsNoTracking()
+                                 .FirstOrDefaultAsync(p => p.Id == id); 
         }
     }
 }

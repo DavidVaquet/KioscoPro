@@ -9,9 +9,9 @@ namespace KioscoPro.Application.Interfaces.Repositories
 {
     public interface IUserRepository
     {
-        Task CreateUserAsync(User user);
+        void AddUser(User user);
         Task<User?> GetUserByIdAsync(Guid id);
-        Task<List<User?>> GetAllUsersAsync();
+        Task<List<User>> GetAllUsersAsync();
         Task<bool> ExistsUserByEmail(string email);
     }
 }

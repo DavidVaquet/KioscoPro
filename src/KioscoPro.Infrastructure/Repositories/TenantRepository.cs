@@ -22,12 +22,14 @@ namespace KioscoPro.Infrastructure.Repositories
         {
             return await _context.Tenants
                                  .Include(t => t.Subscription)
+                                 .AsNoTracking()
                                  .FirstOrDefaultAsync(t => t.Id == id);
         }
         public async Task<Tenant?> GetTenantBySlugAsync(string slug)
         {
             return await _context.Tenants
                                  .Include(t => t.Subscription)
+                                 .AsNoTracking()
                                  .FirstOrDefaultAsync(t => t.CompanySlug == slug);
         }
         public async Task<bool> TenantEmailExistsAsync(string email)

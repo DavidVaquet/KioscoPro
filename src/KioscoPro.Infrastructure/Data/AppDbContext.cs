@@ -55,8 +55,32 @@ namespace KioscoPro.Infrastructure.Data
                         .HasForeignKey(s => s.PlanId)
                         .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Subscription>()
+                        .HasOne(s => s.Tenant)
+                        .WithMany(t => t.Subscriptions)
+                        .HasForeignKey(s => s.TenantId);
 
-            
+            // PLANES
+            modelBuilder.Entity<Plan>()
+                        .ToTable("plans")
+                        .HasKey(p => p.Id);
+
+            modelBuilder.Entity<Plan>()
+                        .HasMany(p => p.Prices)
+                        .WithOne(pp => pp.Plan)
+                        .HasForeignKey(pp => pp.PlanId)
+                        .OnDelete(DeleteBehavior.Cascade);
+
+            // PLAN PRICES
+            modelBuilder.Entity<PlanPrice>()
+                        .ToTable("plan_prices")
+                        .HasKey(pp => pp.Id);
+
+            modelBuilder.Entity<PlanPrice>()
+                        .HasIndex(pp => new { pp.PlanId, pp.Currency, pp.BillingPeriod })
+                        .IsUnique()
+                        .HasFilter("\"effective_to\" IS NULL");
+
             base.OnModelCreating(modelBuilder);
 
         }

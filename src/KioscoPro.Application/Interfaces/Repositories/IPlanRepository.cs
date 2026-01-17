@@ -12,6 +12,6 @@ namespace KioscoPro.Application.Interfaces.Repositories
 
         Task<List<Plan?>> GetAllPlanAsync();
         Task<Plan?> GetPlanByIdAsync(Guid id);
-        Task AddAsync(Plan plan);
+        void Add(Plan plan);
     }
 }
