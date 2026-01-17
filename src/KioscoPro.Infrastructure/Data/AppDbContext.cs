@@ -12,6 +12,8 @@ namespace KioscoPro.Infrastructure.Data
         public DbSet<User> Users => Set<User>();
         public DbSet<UserRole> UserRoles => Set<UserRole>();
         public DbSet<Subscription> Subscriptions => Set<Subscription>();
+        public DbSet<Plan> Plans => Set<Plan>();
+        public DbSet<PlanPrice> PlanPrices => Set<PlanPrice>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

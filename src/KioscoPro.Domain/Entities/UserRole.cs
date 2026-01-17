@@ -8,7 +8,7 @@ namespace KioscoPro.Domain.Entities
         public RoleType Role { get; private set; }
 
         protected UserRole() { }
-        public UserRole(Guid userId, RoleType role)
+        internal UserRole(Guid userId, RoleType role)
         {
             UserId = userId;
             Role = role;

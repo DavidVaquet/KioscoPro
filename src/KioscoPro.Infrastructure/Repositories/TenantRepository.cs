@@ -16,7 +16,6 @@ namespace KioscoPro.Infrastructure.Repositories
         public async Task<Tenant> CreateTenantAsync(Tenant tenant)
         {
             _context.Tenants.Add(tenant);
-            await _context.SaveChangesAsync();
             return tenant;
         }
         public async Task<Tenant?> GetTenantByIdAsync(Guid id)

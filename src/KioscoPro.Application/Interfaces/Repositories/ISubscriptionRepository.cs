@@ -7,6 +7,6 @@ namespace KioscoPro.Application.Interfaces.Repositories
     {
         Task<Subscription> CreateSubscriptionAsync(Subscription subscription);
         Task<Subscription?> GetSubscriptionByTenantIdAsync(Guid tenantId);
-        Task UpdateSubscriptionAsync(Subscription subscription);
+        Task<int> UpdateSubscriptionAsync(Subscription subscription);
     }
 }

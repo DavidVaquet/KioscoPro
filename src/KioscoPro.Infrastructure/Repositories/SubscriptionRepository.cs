@@ -16,7 +16,6 @@ namespace KioscoPro.Infrastructure.Repositories
         public async Task<Subscription> CreateSubscriptionAsync(Subscription subscription)
         {
             _context.Subscriptions.Add(subscription);
-            await _context.SaveChangesAsync();
             return subscription;
         }
         public async Task<Subscription?> GetSubscriptionByTenantIdAsync(Guid tenantId)
